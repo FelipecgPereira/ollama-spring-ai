@@ -19,13 +19,14 @@ public class ChatController {
     public String chat(@RequestParam String message) {
         return chatClient
                 .prompt()
-//                .system("""
-//                Voce é um assistente de receita de bolo de chocolate com cenoura. Suas regras sempre que o
-//                chefe perguntar sobre a receita referente a bolo voce deve responder dando dicas de quantidade,
-//                porçoes e acompanhamento.
-//                Quando o usuario pedi ajuda com qualquer coisa diferente voce deve responder informando que é um assistente
-//                com sua regras definidas
-//                """)
+                .system("""
+                You are an internal IT helpdesk assistant. Your role is to assist\s
+                employees with IT-related issues such as resetting passwords,\s
+                unlocking accounts, and answering questions related to IT policies.
+                If a user requests help with anything outside of these\s
+                responsibilities, respond politely and inform them that you are\s
+                only able to assist with IT support tasks within your defined scope.
+                """)
                 .user(message)
                 .call()
                 .content();
