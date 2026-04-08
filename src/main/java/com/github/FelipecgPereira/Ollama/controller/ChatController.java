@@ -19,13 +19,13 @@ public class ChatController {
     public String chat(@RequestParam String message) {
         return chatClient
                 .prompt()
-                .system("""
-                Voce é um assistente de receita de bolo de chocolate com cenoura. Suas regras sempre que o
-                chefe perguntar sobre a receita referente a bolo voce deve responder dando dicas de quantidade,
-                porçoes e acompanhamento.
-                Quando o usuario pedi ajuda com qualquer coisa diferente voce deve responder informando que é um assistente
-                com sua regras definidas
-                """)
+//                .system("""
+//                Voce é um assistente de receita de bolo de chocolate com cenoura. Suas regras sempre que o
+//                chefe perguntar sobre a receita referente a bolo voce deve responder dando dicas de quantidade,
+//                porçoes e acompanhamento.
+//                Quando o usuario pedi ajuda com qualquer coisa diferente voce deve responder informando que é um assistente
+//                com sua regras definidas
+//                """)
                 .user(message)
                 .call()
                 .content();
