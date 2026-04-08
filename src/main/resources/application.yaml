@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Ollama 
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2:3b
+logging:
+  pattern:
+    console: '%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n'
