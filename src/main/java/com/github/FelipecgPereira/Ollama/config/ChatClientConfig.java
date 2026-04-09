@@ -1,8 +1,12 @@
 package com.github.FelipecgPereira.Ollama.config;
 
+import com.github.FelipecgPereira.Ollama.advisor.TokenUsageAuditAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class ChatClientConfig {
@@ -10,6 +14,7 @@ public class ChatClientConfig {
     @Bean
     public ChatClient chatCLient(ChatClient.Builder chatClient) {
         return chatClient
+                .defaultAdvisors(List.of(new SimpleLoggerAdvisor(), new TokenUsageAuditAdvisor()))
                 .defaultSystem("""
                         You are a specialized English Learning Assistant tailored for IT professionals.\s
                         Your primary goal is to help the user practice English within technical contexts\s
